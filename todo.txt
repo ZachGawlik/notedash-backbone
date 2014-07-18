@@ -1,0 +1,21 @@
+Things to implement:
+ - add notes
+ - delete notes
+ - parse notes for included tags
+ - filtering list by tag
+ - filter list by tags
+ - link to specific notes
+ - timestamp on hover
+
+Design:
+ - rounded rectangles outlining each tag
+ - color scheme
+
+Things to think about:
+ - long tags need to be scrollable to the side but not disrupt divs
+ - how to differentiate between starting with a tag and searching for one when making new note
+ - how to best visualize editing an existing note
+ - how to best add/delete a tag to an existing note
+ - how to best showcase a specific note and provide extra functionality for it
+ - how to best specify and/or relationships for filtering by multiple tags
+ - if it's ironic whether I have this .txt note for my note managing webapp

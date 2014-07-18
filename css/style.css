@@ -1,0 +1,42 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: rgb(78, 78, 78);
+    font: 18px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#app.container {
+    line-height: 1.2em;
+    margin: 20px auto;
+}
+
+textarea#new-note {
+    background: inherit;
+    color: white;
+    border: none;
+    border-bottom: 2px solid black;
+    border-radius: 0;
+    outline: none;
+    resize: none;
+}
+
+.note-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.note-content {
+    background: #eeeeee;
+    border-radius: 8px;
+}
+
+.tags p {
+    /*border: 1px solid #919bba;*/
+    border-radius: 6px;
+    color: #919bba;
+    padding: 2px 5px;
+}
+
+p {
+    margin: 10px 0;
+}
