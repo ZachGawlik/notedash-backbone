@@ -3,8 +3,15 @@ var app = app || {};
 app.DashView = Backbone.View.extend({
     el: '#app',
 
+    events: {
+        'keydown #new-note': 'addOnEnter'
+    },
+
     initialize: function(initialNotes) {
-        this.collection = new app.NoteCollection( initialNotes );
+        this.$input = $('#new-note');
+        this.collection = new app.NoteCollection();
+        this.collection.fetch();
+        this.listenTo(this.collection, 'add', this.renderNote);
         this.render();
     },
 
@@ -17,5 +24,21 @@ app.DashView = Backbone.View.extend({
     renderNote: function(note) {
         var noteView = new app.NoteView({model: note});
         this.$el.append( noteView.render().el );
+    },
+
+    addNote: function() {
+        var newText = this.$input.val();
+        this.$input.val('').trigger('autosize.resize');
+        if (newText) {
+            this.collection.create({id: this.collection.nextId(), text: newText})
+        }
+    },
+
+    addOnEnter: function(e) {
+        if ((event.keyCode == 13) && (!event.shiftKey)) {
+            e.preventDefault();
+            this.addNote();
+        }
+        return;
     }
 });
