@@ -8,16 +8,15 @@
 <body>
     <div class="container" id="app">
         <header id="header" class="row">
-            <textarea rows="1" id="new-note" class="note-content col-xs-8 col-xs-offset-2" type="text" placeholder=" Note or #Search" autofocus></textarea>
+            <textarea rows="1" id="new-note" class="col-xs-8 col-xs-offset-2" placeholder=" Note or #Search" autofocus></textarea>
             <div class="tags col-xs-2"></div>
         </header>
         <div id="notes-container"></div>
     </div>
 
     <script id="note-template" type="text/template">
-        <div class="note-content col-xs-8 col-xs-offset-2">
-            <p><%= text %> </p>
-        </div>
+        <div class="note-content col-xs-8 col-xs-offset-2"><p><%= text %></p></div>
+        <div class="delete-button col-xs-0"></div>
         <div class="tags col-xs-2">
             <% _.each(tags, function(tag) { %>
                 <p><%= tag %></p>

@@ -1,11 +1,10 @@
 Things to implement:
- - add notes
- - delete notes
  - parse notes for included tags
  - filtering list by tag
  - filter list by tags
  - link to specific notes
  - timestamp on hover
+ - beginning note instructions on first load
 
 Design:
  - rounded rectangles outlining each tag

@@ -26,8 +26,25 @@ textarea#new-note {
 }
 
 .note-content {
-    background: #eeeeee;
     border-radius: 8px;
+    background: #eeeeee;
+}
+
+.confirm-delete.note-content {
+    border-radius: 8px 0 0 8px;
+}
+
+.delete-button {
+    background: rgb(200, 50, 50);
+}
+
+.confirm-delete.delete-button {
+    border-radius: 0 8px 8px 0;
+}
+
+.col-xs-0 {
+    width: 0;
+    display: none;
 }
 
 .tags p {
@@ -39,4 +56,5 @@ textarea#new-note {
 
 p {
     margin: 10px 0;
+    white-space: pre;
 }
