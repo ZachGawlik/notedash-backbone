@@ -26,11 +26,16 @@ app.DashView = Backbone.View.extend({
         $('#notes-container').prepend( noteView.render().el );
     },
 
+
+
     addNote: function() {
-        var newText = this.$input.val();
+        var inputText = this.$input.val().trim();
         this.$input.val('').trigger('autosize.resize');
-        if (newText) {
-            this.collection.create({id: this.collection.nextId(), text: newText, tags: ['#testtag']})
+        console.log(inputText);
+        if (inputText) {
+            var newTags = inputText.match(/#[\w\d_-]+\s{0,1}/g);
+            var newText = inputText.split(/#[\w\d_-]+\s{0,1}/g).join('').trim();
+            this.collection.create({id: this.collection.nextId(), text: newText, tags: newTags});
         }
     },
 

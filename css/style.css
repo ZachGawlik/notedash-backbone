@@ -56,5 +56,5 @@ textarea#new-note {
 
 p {
     margin: 10px 0;
-    white-space: pre;
+    white-space: pre-wrap;
 }

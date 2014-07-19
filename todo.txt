@@ -1,5 +1,4 @@
 Things to implement:
- - parse notes for included tags
  - filtering list by tag
  - filter list by tags
  - link to specific notes
