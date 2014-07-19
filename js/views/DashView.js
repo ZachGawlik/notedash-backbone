@@ -4,7 +4,7 @@ app.DashView = Backbone.View.extend({
     el: '#app',
 
     events: {
-        'keydown #new-note': 'addOnEnter'
+        'keydown #new-note': 'submitOnEnter'
     },
 
     initialize: function() {
@@ -26,23 +26,24 @@ app.DashView = Backbone.View.extend({
         $('#notes-container').prepend( noteView.render().el );
     },
 
+    addNote: function(inputText) {
+        var newTags = inputText.match(/#[\w\d_-]+\s{0,1}/g);
+        var newText = inputText.split(/#[\w\d_-]+\s{0,1}/g).join('').trim();
+        this.collection.create({id: this.collection.nextId(), text: newText, tags: newTags});
+    },
 
-
-    addNote: function() {
+    handleInput: function() {
         var inputText = this.$input.val().trim();
         this.$input.val('').trigger('autosize.resize');
-        console.log(inputText);
-        if (inputText) {
-            var newTags = inputText.match(/#[\w\d_-]+\s{0,1}/g);
-            var newText = inputText.split(/#[\w\d_-]+\s{0,1}/g).join('').trim();
-            this.collection.create({id: this.collection.nextId(), text: newText, tags: newTags});
+        if (inputText && (inputText.charAt(0) !== '#')) {
+            this.addNote(inputText);
         }
     },
 
-    addOnEnter: function(e) {
+    submitOnEnter: function(e) {
         if ((event.keyCode === 13) && (!event.shiftKey)) {
             e.preventDefault();
-            this.addNote();
+            this.handleInput();
         }
     }
 });
