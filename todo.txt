@@ -1,9 +1,10 @@
 Things to implement:
- - filtering list by tag
- - filter list by tags
+ - click tags on side to filter by them
  - link to specific notes
  - timestamp on hover
+ - undo confirm delete on all other notes
  - beginning note instructions on first load
+ - search multiple tags at once
 
 Design:
  - rounded rectangles outlining each tag
@@ -17,3 +18,9 @@ Things to think about:
  - how to best showcase a specific note and provide extra functionality for it
  - how to best specify and/or relationships for filtering by multiple tags
  - if it's ironic whether I have this .txt note for my note managing webapp
+ - best way to escape out of filter by a tag
+
+Not obvious features:
+- shift enter for line break in note
+- searching by tag in general
+- ability to start a note with a tag

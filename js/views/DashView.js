@@ -4,13 +4,15 @@ app.DashView = Backbone.View.extend({
     el: '#app',
 
     events: {
-        'keydown #new-note': 'submitOnEnter'
+        'keydown #new-note': 'submitOnEnter',
+        'keyup #new-note': 'updateFilter'
     },
 
     initialize: function() {
         this.$input = $('#new-note');
         this.collection = new app.NoteCollection();
         this.collection.fetch();
+
         this.listenTo(this.collection, 'add', this.renderNote);
         this.render();
     },
@@ -32,18 +34,30 @@ app.DashView = Backbone.View.extend({
         this.collection.create({id: this.collection.nextId(), text: newText, tags: newTags});
     },
 
-    handleInput: function() {
+    submitOnEnter: function(event) {
         var inputText = this.$input.val().trim();
-        this.$input.val('').trigger('autosize.resize');
-        if (inputText && (inputText.charAt(0) !== '#')) {
-            this.addNote(inputText);
+        if (event.keyCode === 13 && !event.shiftKey) {
+            event.preventDefault();
+            if (inputText && !(inputText.charAt(0) === '#' && inputText.search(/\s/) === -1)) {
+                this.$input.val('').trigger('autosize.resize');
+                this.addNote(inputText);
+            }
         }
     },
 
-    submitOnEnter: function(e) {
-        if ((event.keyCode === 13) && (!event.shiftKey)) {
-            e.preventDefault();
-            this.handleInput();
+    filterNotes: function (tag) {
+        app.currentFilter = tag;
+        this.collection.each(function(note) {
+            note.trigger('checkHidden');
+        })
+    },
+
+    updateFilter: function() {
+        var inputText = this.$input.val().trim();
+        if (inputText.charAt(0) === '#' && inputText.search(/\s/) === -1) {
+            this.filterNotes(inputText);
+        } else {
+            $('.note-container').removeClass('hidden');
         }
     }
 });

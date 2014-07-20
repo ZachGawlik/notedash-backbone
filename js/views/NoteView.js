@@ -10,6 +10,10 @@ app.NoteView = Backbone.View.extend({
         'click .confirm-delete.delete-button': 'deleteNote'
     },
 
+    initialize: function() {
+        this.listenTo(this.model, 'checkHidden', this.toggleHidden);
+    },
+
     render: function () {
         this.$el.html(this.template(this.model.attributes));
         return this;
@@ -26,6 +30,13 @@ app.NoteView = Backbone.View.extend({
         $deleteButton.toggleClass('confirm-delete');
         $deleteButton.toggleClass('col-xs-0');
         $deleteButton.toggleClass('col-xs-1');
+    },
+
+    toggleHidden: function () {
+        this.$el.toggleClass('hidden',
+            !(_.some(this.model.get('tags'), function(t) {
+                return t.toLowerCase().search(app.currentFilter.toLowerCase()) !== -1;
+            })));
     },
 
     deleteNote: function () {
