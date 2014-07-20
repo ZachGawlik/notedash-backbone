@@ -19,7 +19,7 @@
         <div class="delete-button col-xs-0"></div>
         <div class="tags col-xs-2">
             <% _.each(tags, function(tag) { %>
-                <p><%= tag %></p>
+                <a href="tagged/<%= tag.substr(1) %>"><%= tag %></a>
             <% }); %>
         </div>
     </script>
@@ -33,5 +33,6 @@
     <script src="js/collections/NoteCollection.js"></script>
     <script src="js/views/DashView.js"></script>
     <script src="js/views/NoteView.js"></script>
+    <script src="js/router.js"></script>
     <script src="js/app.js"></script>
 </body>

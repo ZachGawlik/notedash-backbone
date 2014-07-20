@@ -7,7 +7,6 @@ Things to implement:
  - search multiple tags at once
 
 Design:
- - rounded rectangles outlining each tag
  - color scheme
 
 Things to think about:

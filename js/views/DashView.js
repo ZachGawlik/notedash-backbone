@@ -14,6 +14,7 @@ app.DashView = Backbone.View.extend({
         this.collection.fetch();
 
         this.listenTo(this.collection, 'add', this.renderNote);
+        this.listenTo(this.collection, 'filter', this.filterNotes);
         this.render();
     },
 
@@ -45,8 +46,7 @@ app.DashView = Backbone.View.extend({
         }
     },
 
-    filterNotes: function (tag) {
-        app.currentFilter = tag;
+    filterNotes: function () {
         this.collection.each(function(note) {
             note.trigger('checkHidden');
         })
@@ -55,6 +55,7 @@ app.DashView = Backbone.View.extend({
     updateFilter: function() {
         var inputText = this.$input.val().trim();
         if (inputText.charAt(0) === '#' && inputText.search(/\s/) === -1) {
+            app.currentFilter = tag;
             this.filterNotes(inputText);
         } else {
             $('.note-container').removeClass('hidden');
