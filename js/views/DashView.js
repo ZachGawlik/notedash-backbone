@@ -14,6 +14,9 @@ app.DashView = Backbone.View.extend({
         this.listenTo(app.Notes, 'add', this.renderNote);
         this.listenTo(app.Notes, 'filter', this.filterNotes);
         this.render();
+        if (app.Notes.length === 0) {
+            this.addTutorialNotes();
+        }
     },
 
     render: function () {
@@ -60,5 +63,10 @@ app.DashView = Backbone.View.extend({
             $('.note-container').removeClass('hidden');
             app.NoteRouter.navigate('');
         }
+    },
+
+    addTutorialNotes: function() {
+        this.addNote('Add tags to notes with # anywhere. #instruction Click them on the side or type them in at top to filter your notes');
+        this.addNote('Welcome to NoteDash! NoteDash is meant for quick in and quick out. No fuss. Just start typing and hit enter to create your first note\n\nHit Shift+Enter\nFor a new line break in the note');
     }
 });
