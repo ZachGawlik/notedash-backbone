@@ -47,7 +47,7 @@ app.DashView = Backbone.View.extend({
     filterNotes: function () {
         app.Notes.each(function(note) {
             note.trigger('checkHidden');
-        })
+        });
     },
 
     updateFilter: function() {
@@ -57,6 +57,7 @@ app.DashView = Backbone.View.extend({
             this.filterNotes(inputText);
         } else {
             $('.note-container').removeClass('hidden');
+            app.NoteRouter.navigate('');
         }
     }
 });

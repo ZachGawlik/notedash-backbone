@@ -17,18 +17,9 @@ var NoteRouter = Backbone.Router.extend({
 
     setFilter: function(filter) {
         if (!app.Notes) this.list();
-        console.log('called with ' + filter);
-        filter = filter.trim();
-        if (filter.charAt(0) === '#') {
-            app.currentFilter = filter;
-        }
-        else {
-            app.currentFilter = '#' + filter;
-        }
-        console.log('appnotes: ' + app.Notes.length);
+        app.currentFilter = filter.trim();
+        $('#new-note').val('#' + app.currentFilter);
         app.Notes.trigger('filter');
-        //todo: must add # to beginning
-        console.log("lol filter called here's what it thiks the filter is: " + filter);
     }
 });
 
