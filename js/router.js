@@ -18,6 +18,7 @@ var NoteRouter = Backbone.Router.extend({
     setFilter: function(filter) {
         if (!app.Notes) this.list();
         app.currentFilter = filter.trim();
+        $('#new-note').focus();
         $('#new-note').val('#' + app.currentFilter);
         app.Notes.trigger('filter');
     }

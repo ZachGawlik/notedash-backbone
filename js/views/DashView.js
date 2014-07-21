@@ -10,6 +10,7 @@ app.DashView = Backbone.View.extend({
 
     initialize: function() {
         this.$input = $('#new-note');
+        this.$input.focus();
         this.listenTo(app.Notes, 'add', this.renderNote);
         this.listenTo(app.Notes, 'filter', this.filterNotes);
         this.render();
