@@ -2,7 +2,6 @@ Things to implement:
  - link to specific notes
  - timestamp on hover
  - undo confirm delete on all other notes
- - beginning note instructions on first load
  - search multiple tags at once
 
 Design:
