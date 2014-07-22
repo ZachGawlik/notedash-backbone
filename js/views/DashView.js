@@ -60,7 +60,7 @@ app.DashView = Backbone.View.extend({
             app.currentFilter = inputText;
             this.filterNotes(inputText);
         } else {
-            $('.note-container').removeClass('hidden');
+            $('.note-container').removeClass('filtered-out');
             app.NoteRouter.navigate('');
         }
     },

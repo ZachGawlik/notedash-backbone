@@ -1,8 +1,9 @@
 Things to implement:
+ - add/remove tags when editing
  - link to specific notes
  - timestamp on hover
- - undo confirm delete on all other notes
  - search multiple tags at once
+ - turn pastes when editing into plaintext
 
 Design:
  - color scheme

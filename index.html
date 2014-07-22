@@ -15,7 +15,9 @@
     </div>
 
     <script id="note-template" type="text/template">
-        <div class="note-content col-xs-8 col-xs-offset-2"><p><%= text %></p></div>
+        <div class="note-content col-xs-8 col-xs-offset-2">
+            <p contenteditable="true" class="note-text"><%= text %></p>
+        </div>
         <div class="delete-button col-xs-0"></div>
         <div class="tags col-xs-2">
             <% _.each(tags, function(tag) { %>

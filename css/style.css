@@ -8,14 +8,17 @@ html, body {
     margin: 20px auto;
 }
 
-textarea#new-note {
+textarea {
     background: inherit;
-    color: white;
-    border: none;
-    border-bottom: 2px solid black;
-    border-radius: 0;
     outline: none;
     resize: none;
+    border: none;
+}
+
+textarea#new-note {
+    color: white;
+    border-bottom: 2px solid black;
+    border-radius: 0;
 }
 
 .note-container {
@@ -28,7 +31,7 @@ textarea#new-note {
     background: #eeeeee;
 }
 
-.confirm-delete.note-content {
+.edit-mode > .note-content {
     border-radius: 8px 0 0 8px;
 }
 
@@ -36,7 +39,7 @@ textarea#new-note {
     background: rgb(200, 50, 50);
 }
 
-.confirm-delete.delete-button {
+.edit-mode > .delete-button {
     border-radius: 0 8px 8px 0;
 }
 
@@ -61,11 +64,16 @@ textarea#new-note {
     text-decoration: none;
 }
 
+[contenteditable="true"]:active, [contenteditable="true"]:focus {
+    border:none;
+    outline:none;
+}
+
 p {
     margin: 10px 0;
     white-space: pre-wrap;
 }
 
-.hidden {
+.filtered-out {
     display: none;
 }
