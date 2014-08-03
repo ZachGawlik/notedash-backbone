@@ -41,7 +41,12 @@ app.DashView = Backbone.View.extend({
         var inputText = this.$input.val().trim();
         if (event.keyCode === 13 && !event.shiftKey) {
             event.preventDefault();
-            if (inputText && !(inputText.charAt(0) === '#' && inputText.search(/\s/) === -1)) {
+
+            if (!inputText) return;
+            if (inputText.charAt(0) === '#' && inputText.search(/\s/) === -1) {
+                app.NoteRouter.navigate(inputText);
+            }
+            else {
                 this.$input.val('').trigger('autosize.resize');
                 this.addNote(inputText);
             }

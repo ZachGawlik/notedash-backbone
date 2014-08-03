@@ -1,4 +1,5 @@
 Things to implement:
+ - editing notes
  - add/remove tags when editing
  - link to specific notes
  - timestamp on hover

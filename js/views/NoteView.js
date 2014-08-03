@@ -9,12 +9,12 @@ app.NoteView = Backbone.View.extend({
         'click .note-content': 'turnOnEditMode',
         'mousedown .delete-button': 'deleteNote',
         'keyup .note-text': 'adjustButton',
-        'blur .note-content': 'turnOffEditMode',
         'keydown .note-text': 'saveOnEnter'
     },
 
     initialize: function() {
         this.listenTo(this.model, 'checkHidden', this.toggleHidden);
+        this.listenTo(this.model, 'closeEdit', this.turnOffEditMode);
     },
 
     render: function () {
@@ -27,6 +27,10 @@ app.NoteView = Backbone.View.extend({
         var $deleteButton = this.$el.find('.delete-button');
         $deleteButton.height($note.height());
 
+        app.Notes.each(function(note) {
+            note.trigger('closeEdit');
+        });
+
         this.$el.addClass('edit-mode');
         $note.removeClass('col-xs-offset-2');
         $note.addClass('col-xs-offset-1');
@@ -35,6 +39,8 @@ app.NoteView = Backbone.View.extend({
     },
 
     turnOffEditMode: function () {
+        if (!this.$el.hasClass('edit-mode')) return;
+
         var $note = this.$el.find('.note-content');
         var $deleteButton = this.$el.find('.delete-button');
 
@@ -61,7 +67,6 @@ app.NoteView = Backbone.View.extend({
     saveOnEnter: function () {
         if (event.keyCode === 13 && !event.shiftKey) {
             event.preventDefault();
-            this.$el.find('.note-text').blur();
         }
     },
 
@@ -73,7 +78,6 @@ app.NoteView = Backbone.View.extend({
     },
 
     deleteNote: function () {
-        console.log('trying to delete');
         this.model.destroy();
         this.remove();
     }
