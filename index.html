@@ -14,9 +14,11 @@
         <div id="notes-container"></div>
     </div>
 
+
+
     <script id="note-template" type="text/template">
         <div class="note-content col-xs-8 col-xs-offset-2">
-            <p class="note-text"><%= text %></p>
+            <textarea rows="1" class="note-text-edit" spellcheck="false"><%= text %></textarea>
         </div>
         <div class="delete-button col-xs-0"></div>
         <div class="tags col-xs-2">

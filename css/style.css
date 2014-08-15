@@ -3,7 +3,7 @@ html, body {
     font: 18px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-#app.container {
+#app {
     line-height: 1.2em;
     margin: 20px auto;
 }
@@ -36,6 +36,12 @@ textarea#new-note {
     border-radius: 0 8px 8px 0;
 }
 
+.note-text-edit {
+    margin: 10px 0;
+    width: 100%;
+    white-space: pre-wrap;
+}
+
 .edit-mode > .note-content {
     border-radius: 8px 0 0 8px;
 }
@@ -59,11 +65,6 @@ textarea#new-note {
     border: 1px solid #a1accf;
     color: #a1accf;
     text-decoration: none;
-}
-
-p {
-    margin: 10px 0;
-    white-space: pre-wrap;
 }
 
 .filtered-out {
