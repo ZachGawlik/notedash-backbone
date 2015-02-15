@@ -1,24 +1,21 @@
+Consider:
+ - Either switching to Angular or incorporating Marionette
+
 Things to implement:
- - editing notes
+ - escape out of all edits if typing a brand new note up top
  - add/remove tags when editing
  - link to specific notes
  - timestamp on hover
  - search multiple tags at once
- - turn pastes when editing into plaintext
- - escape out of all edits if typing a brand new note up top
 
 Design:
  - color scheme
 
 Things to think about:
- - long tags need to extend to the side but not disrupt divs
- - how to differentiate between starting with a tag and searching for one when making new note
  - how to best visualize editing an existing note
  - how to best add/delete a tag to an existing note
  - how to best showcase a specific note and provide extra functionality for it
- - how to best specify and/or relationships for filtering by multiple tags
- - if it's ironic whether I have this .txt note for my note managing webapp
- - best way to escape out of filter by a tag
+ - how to best specify AND, OR relationships for filtering by multiple tags
 
 Not obvious features:
 - shift enter for line break in note
